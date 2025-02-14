@@ -3,6 +3,6 @@
 <template>
   <div>
     <h1>Projects</h1>
-    <router-link to="/">Home</router-link>
+    <router-link :to="{ name: '/projects/[id]', params: { id: 1 } }">Project 1</router-link>
   </div>
 </template>
