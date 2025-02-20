@@ -19,6 +19,8 @@ onMounted(async () => {
 <template>
   <div>
     <h1>Projects</h1>
-    {{ projects && projects[0] }}
+    <ul>
+      <li v-for="project in projects" :key="project.id">{{ project.name }}</li>
+    </ul>
   </div>
 </template>

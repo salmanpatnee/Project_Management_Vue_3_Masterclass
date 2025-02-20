@@ -4,6 +4,8 @@ import { createClient } from '@supabase/supabase-js'
 // Create a single supabase client for interacting with your database
 const supabase = createClient(process.env.VITE_SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY)
 
+const numEntriesPerTable = 10
+
 const logErrorAndExit = (tableName, error) => {
   console.error(
     `An error occurred in table '${tableName}' with code ${error.code}: ${error.message}`,
@@ -41,5 +43,34 @@ const seedProjects = async (numProjects = 10) => {
     return logErrorAndExit('Projects', error)
   }
 }
+const seedTasks = async (numEntries, projectsIds) => {
+  logStep('Seeding tasks...')
+  const tasks = []
 
-await seedProjects(50)
+  for (let i = 0; i < numEntries; i++) {
+    tasks.push({
+      name: faker.lorem.words(3),
+      status: faker.helpers.arrayElement(['in-progress', 'completed']),
+      description: faker.lorem.paragraph(),
+      due_date: faker.date.future(),
+      project_id: faker.helpers.arrayElement(projectsIds),
+      collaborators: faker.helpers.arrayElements([1, 2, 3, 4]),
+    })
+  }
+
+  const { data, error } = await supabase.from('tasks').insert(tasks).select('id')
+
+  if (error) return logErrorAndExit('Tasks', error)
+
+  logStep('Tasks seeded successfully.')
+
+  return data
+}
+
+const seedDatabase = async (numEntriesPerTable) => {
+  const projectsIds = (await seedProjects(numEntriesPerTable)).map((project) => project.id)
+
+  await seedTasks(numEntriesPerTable, projectsIds)
+}
+
+seedDatabase(numEntriesPerTable)

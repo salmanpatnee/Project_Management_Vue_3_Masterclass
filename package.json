@@ -13,6 +13,7 @@
     "format": "prettier --write src/",
     "db:reset": "supabase db reset --linked",
     "db:seed": "node --env-file=.env.local database/seed.js",
+    "db:migration:new": "supabase migration new",
     "supabase:types": "npx supabase gen types typescript --project-id nxupjeriolsjcbzsthnm --schema public > database/types.ts"
   },
   "dependencies": {

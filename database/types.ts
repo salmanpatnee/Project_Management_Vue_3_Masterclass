@@ -36,6 +36,47 @@ export type Database = {
         }
         Relationships: []
       }
+      tasks: {
+        Row: {
+          collaborators: string[]
+          created_at: string
+          description: string
+          due_date: string | null
+          id: number
+          name: string
+          project_id: number | null
+          status: string
+        }
+        Insert: {
+          collaborators?: string[]
+          created_at?: string
+          description: string
+          due_date?: string | null
+          id?: never
+          name: string
+          project_id?: number | null
+          status?: string
+        }
+        Update: {
+          collaborators?: string[]
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          id?: never
+          name?: string
+          project_id?: number | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tasks_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
