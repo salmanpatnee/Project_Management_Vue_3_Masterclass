@@ -13,7 +13,11 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 <template>
   <nav class="flex justify-between items-center h-16 border-b bg-muted/40 px-6">
-    <form class="w-full max-w-96">
+    <form class="w-full max-w-96 relative h-fit">
+      <iconify-icon
+        icon="lucide:search"
+        class="absolute top-[50%] translate-y-[-50%] left-2.5 text-muted-foreground"
+      ></iconify-icon>
       <Input type="search" class="w-full pl-8 bg-background" placeholder="Search..." />
     </form>
     <DropdownMenu>
