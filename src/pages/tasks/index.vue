@@ -5,29 +5,47 @@ import type { Tables } from '../../../database/types'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/datatable.vue'
 
-interface Payment {
-  id: string
-  amount: number
-  status: 'pending' | 'processing' | 'success' | 'failed'
-  email: string
-}
-
-const columns: ColumnDef<Payment>[] = [
+const columns: ColumnDef<Tables<'tasks'>>[] = [
   {
-    accessorKey: 'amount',
-    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    accessorKey: 'name',
+    header: () => h('div', { class: 'text-left' }, 'Task'),
     cell: ({ row }) => {
-      const amount = Number.parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(amount)
-
-      return h('div', { class: 'text-right font-medium' }, formatted)
+      return h('div', { class: 'text-left font-medium' }, row.getValue('name'))
+    },
+  },
+  {
+    accessorKey: 'status',
+    header: () => h('div', { class: 'text-left' }, 'Status'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('status'))
+    },
+  },
+  {
+    accessorKey: 'due_date',
+    header: () => h('div', { class: 'text-left' }, 'Due Date'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('due_date'))
+    },
+  },
+  {
+    accessorKey: 'project_id',
+    header: () => h('div', { class: 'text-left' }, 'Project'),
+    cell: ({ row }) => {
+      return h('div', { class: 'text-left font-medium' }, row.getValue('project_id'))
+    },
+  },
+  {
+    accessorKey: 'collaborators',
+    header: () => h('div', { class: 'text-left' }, 'Collaborators'),
+    cell: ({ row }) => {
+      return h(
+        'div',
+        { class: 'text-left font-medium' },
+        JSON.stringify(row.getValue('collaborators')),
+      )
     },
   },
 ]
-const data = ref<Payment[]>([])
 
 const tasks = ref<Tables<'tasks'>[] | null>(null)
 
@@ -37,32 +55,13 @@ const fetchTasks = async () => {
   tasks.value = data
 }
 
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: '728ed52f',
-      amount: 100,
-      status: 'pending',
-      email: 'm@example.com',
-    },
-    // ...
-  ]
-}
-
 onMounted(async () => {
   await fetchTasks()
-  data.value = await getData()
 })
 </script>
 
 <template>
   <div>
-    <h1>Tasks</h1>
-    <DataTable :columns="columns" :data="data" />
-
-    <ul>
-      <li v-for="task in tasks" :key="task.id">{{ task.name }}</li>
-    </ul>
+    <DataTable v-if="tasks" :columns="columns" :data="tasks" />
   </div>
 </template>
