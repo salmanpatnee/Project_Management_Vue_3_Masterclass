@@ -2,12 +2,11 @@
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const id = route.params.id
 </script>
 
 <template>
   <div>
-    <h1>Project - {{ id }}</h1>
-    <router-link :to="{ name: '/projects/' }">Projects</router-link>
+    <h1>Task - {{ route.params?.id }}</h1>
+    <router-link :to="{ name: '/tasks/' }">Tasks</router-link>
   </div>
 </template>

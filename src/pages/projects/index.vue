@@ -4,13 +4,21 @@ import { ref, onMounted, h } from 'vue'
 import type { Tables } from '../../../database/types'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/datatable.vue'
+import { RouterLink } from 'vue-router'
 
 const columns: ColumnDef<Tables<'projects'>>[] = [
   {
     accessorKey: 'name',
     header: () => h('div', { class: 'text-left' }, 'Project'),
     cell: ({ row }) => {
-      return h('div', { class: 'text-left font-medium' }, row.getValue('name'))
+      return h(
+        RouterLink,
+        {
+          to: `/projects/${row.original.slug}`,
+          class: 'text-left font-medium hover:bg-muted block w-full',
+        },
+        () => row.getValue('name'),
+      )
     },
   },
 
