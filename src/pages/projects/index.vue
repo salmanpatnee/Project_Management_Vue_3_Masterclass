@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { supabase } from '@/lib/supabaseClient'
-import { ref, onMounted, h } from 'vue'
 import type { Tables } from '../../../database/types'
 import type { ColumnDef } from '@tanstack/vue-table'
 import DataTable from '@/components/datatable.vue'
