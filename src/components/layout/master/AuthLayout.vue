@@ -1,7 +1,4 @@
-<script setup lang="ts">
-import AppSidebar from '../AppSidebar.vue'
-import TopNav from '../TopNav.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <AppSidebar />
