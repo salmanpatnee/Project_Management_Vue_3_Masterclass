@@ -1,39 +1,89 @@
-# product-management
 
-This template should help get you started developing with Vue 3 in Vite.
+# 📋 Project Management App
 
-## Recommended IDE Setup
+A project built while following the Vue.js 3 Masterclass by Vue School. Learn how to build a real-world app with Vue 3, Vue Router, Pinia, Composition API, and more — from setup to production-ready!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Type Support for `.vue` Imports in TS
+## ✨ Features
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+- 🗂️ **Project Creation**: Create and manage multiple projects.
+- ✅ **Task Management**: Add, edit, and delete tasks within projects.
+- 👥 **User Authentication**: Register and log in users to manage their own projects.
+- 📈 **Progress Tracking**: Visual indicators for project and task completion statuses.
 
-## Customize configuration
+---
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## 🚀 Getting Started
 
-## Project Setup
+### 1. Clone the repository
 
-```sh
+```bash
+git clone https://github.com/salmanpatnee/Project_Management_Vue_3_Masterclass.git
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd Project_Management_Vue_3_Masterclass
+```
+
+### 3. Install dependencies
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### 4. Set up environment variables
 
-```sh
+- Duplicate `.env.example` and rename it to `.env`.
+- Fill in your environment variables as needed.
+
+### 5. Run the development server
+
+```bash
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+Open your browser and go to: [http://localhost:3000](http://localhost:3000)
 
-```sh
-npm run build
-```
+---
 
-### Lint with [ESLint](https://eslint.org/)
+## 🛠️ Tech Stack
 
-```sh
-npm run lint
-```
+- 🖖 **Vue.js 3**: JavaScript framework.
+- 🚦 **Vue Router**: Routing for Vue.js applications.
+- 🍍 **Pinia**: State management.
+- 🎨 **Tailwind CSS**: Utility-first CSS framework.
+- ⚡ **Vite**: Next-generation frontend tooling.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! To contribute:
+
+1. 🍴 Fork the repository.
+2. 🔀 Create your feature branch: `git checkout -b feature/YourFeature`.
+3. 💾 Commit your changes: `git commit -m 'Add some feature'`.
+4. 🚀 Push to the branch: `git push origin feature/YourFeature`.
+5. 📝 Open a pull request.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👤 Author
+
+**Salman Patnee**
+
+- GitHub: [@salmanpatnee](https://github.com/salmanpatnee)
+- LinkedIn: [Salman Patnee](https://www.linkedin.com/in/salmanpatnee/)
+
+---
+
+> Built with passion and Vue.js mastery.
